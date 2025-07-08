@@ -1,0 +1,9 @@
+ --- 
+import Layout from '../../layouts/Layout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+---
+
+<Layout>
+  Về chúng tôi
+ <a href={getRelativeLocaleUrl('vi', '/')}>Home</a> 
+</Layout>

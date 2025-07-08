@@ -1,0 +1,12 @@
+--- 
+import Layout from '../../layouts/Layout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+---
+
+<Layout>
+ 
+</Layout> 
+
+ <h1 class="text-3xl font-bold underline">Xin Chào!</h1>
+<a href={getRelativeLocaleUrl('vi', 'about')}>About</a> 

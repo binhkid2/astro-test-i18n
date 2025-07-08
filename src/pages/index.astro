@@ -1,11 +1,21 @@
----
-import Welcome from '../components/Welcome.astro';
+--- 
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  Lưu ý: Trang này luôn luôn được yêu cầu
+  //astro.config.mjs
+    routing: "manual"
+    Khi tùy chọn này được bật, Astro sẽ vô hiệu hóa phần mềm trung gian i18n của nó để bạn có thể triển khai logic tùy chỉnh của riêng mình. Không có routingtùy chọn nào khác (ví dụ prefixDefaultLocale) có thể được cấu hình bằng routing: "manual".
+
+Bạn sẽ chịu trách nhiệm viết logic định tuyến của riêng mình hoặc thực thi phần mềm trung gian i18n của Astro theo cách thủ công cùng với phần mềm của riêng bạn.
+https://docs.astro.build/en/guides/internationalization/#middleware-function
+
+
+Astro cung cấp các hàm trợ giúp cho phần mềm trung gian của bạn để bạn có thể kiểm soát định tuyến mặc định, ngoại lệ, hành vi dự phòng, phát hiện lỗi, v.v. của riêng mình: redirectToDefaultLocale(), notFound(), và redirectToFallback():
+
+src/middleware.js
+ 
+
 </Layout>

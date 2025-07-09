@@ -23,7 +23,7 @@ export default function LanguageSelect() {
   };
 
   return (
-    <div className="  mx-auto p-6 space-y-6">
+    <div  id="main-title" className="  mx-auto p-6 space-y-6">
       {/* Custom Dropdown */}
       <div className="relative  mx-auto">
         <button

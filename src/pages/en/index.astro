@@ -1,14 +1,48 @@
---- 
+---
+import Tour from '../../components/Tour.astro';
 import Layout from '../../layouts/Layout.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-
 ---
 
 <Layout>
- 
-</Layout> 
+  <div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold underline mb-6">
+      Hello world!
+    </h1>
 
- <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-<a href={getRelativeLocaleUrl('en', 'about')}>About</a> 
+    <div id="content-section" class="mb-6">
+      <p class="text-lg mb-4">
+        Welcome to our amazing website! This is a demo of Driver.js integration.
+      </p>
+
+      <div id="navigation-area" class="mb-6">
+        <a
+          href={getRelativeLocaleUrl('en', 'about')}
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+        >
+          About
+        </a>
+        <button
+          id="start-tour"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Start Tour
+        </button>
+      </div>
+
+      <div id="features-section" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div id="feature-1" class="bg-gray-100 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-2">Feature 1</h3>
+          <p>This is an amazing feature that will blow your mind!</p>
+        </div>
+        <div id="feature-2" class="bg-gray-100 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-2">Feature 2</h3>
+          <p>Another incredible feature that you'll love to use.</p>
+        </div> 
+      </div>
+      <div id="tour-end-anchor" class="hidden absolute top-1/2 left-1/2 w-0 h-0"></div>
+
+    </div>
+  </div>
+    <Tour />
+</Layout>

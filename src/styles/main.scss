@@ -1,0 +1,14 @@
+@use "sass:meta";
+
+@layer base {
+  @include meta.load-css("base");
+}
+
+@layer components {
+  @include meta.load-css("prose");
+  @include meta.load-css("glass");
+}
+
+@layer utilities {
+  @include meta.load-css("utilities");
+}

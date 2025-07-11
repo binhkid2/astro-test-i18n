@@ -1,7 +1,12 @@
 ---
+import { languageCodes } from "@/i18n/config";
 import NotFound from "../../components/NotFound.astro";
 import Layout from "../../layouts/Layout.astro";
-
+export async function getStaticPaths() {
+  return languageCodes.map((lang) => ({
+    params: { lang },
+  }));
+}
 
 --- 
 <Layout>

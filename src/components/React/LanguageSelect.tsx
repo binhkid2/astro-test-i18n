@@ -44,7 +44,7 @@ export default function LanguageSelect() {
 
         {/* Dropdown Menu */}
         {isDropdownOpen && (
-          <div className="absolute glass hide-scrollbar top-full left-0 right-0 mt-2  border  rounded-xl shadow-lg z-50 max-h-80 overflow-y-auto">
+          <div className="absolute glass thin-scrollbar top-full left-0 right-0 mt-2  border  rounded-xl shadow-lg z-50 max-h-80 overflow-y-auto">
             {languageCodes.map((lang) => (
               <button
                 key={lang}

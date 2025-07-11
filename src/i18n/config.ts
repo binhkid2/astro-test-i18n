@@ -55,3 +55,4 @@ const translationMap: Record<LanguageCode, any> = {
 export function getTranslations(lang: LanguageCode) {
   return translationMap[lang] || translationMap[defaultLang];
 }
+

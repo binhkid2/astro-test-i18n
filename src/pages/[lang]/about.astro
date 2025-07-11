@@ -1,10 +1,15 @@
 ---
-import { defaultLang, getTranslations, type LanguageCode } from '@/i18n/config';
+import { defaultLang, getTranslations, languageCodes, type LanguageCode } from '@/i18n/config';
 import Layout from '../../layouts/Layout.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n'; 
-export const prerender = false;
+ 
 const lang = (Astro.params.lang ?? defaultLang) as LanguageCode;
 const t = await getTranslations(lang);
+export async function getStaticPaths() {
+  return languageCodes.map((lang) => ({
+    params: { lang },
+  }));
+}
 ---
 
 <Layout>

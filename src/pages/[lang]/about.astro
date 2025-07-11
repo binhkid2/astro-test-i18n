@@ -1,0 +1,14 @@
+---
+import { defaultLang, getTranslations, type LanguageCode } from '@/i18n/config';
+import Layout from '../../layouts/Layout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n'; 
+export const prerender = false;
+const lang = (Astro.params.lang ?? defaultLang) as LanguageCode;
+const t = await getTranslations(lang);
+---
+
+<Layout>
+  <a href={getRelativeLocaleUrl(lang, '/')}>Home</a> 
+  <h1>{t.about.title}</h1>
+  <p>{t.about.content}</p>
+</Layout>

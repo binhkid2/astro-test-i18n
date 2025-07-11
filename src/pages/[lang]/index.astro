@@ -1,8 +1,9 @@
 ---
+import Button from '@components/Button.astro';
 import Tour from '../../components/Tour.astro';
 import Layout from '../../layouts/Layout.astro';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-export const prerender = false;
+import { getRelativeLocaleUrl } from 'astro:i18n'; 
+export const prerender = false;  
 ---
 
 <Layout>
@@ -23,12 +24,7 @@ export const prerender = false;
         >
           About
         </a>
-        <button
-          id="start-tour"
-          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Start Tour
-        </button>
+        <Button id="start-tour" glass label="Start Guide" hoverInvert/>
       </div>
 
       <div id="features-section" class="grid grid-cols-1 md:grid-cols-2 gap-6">

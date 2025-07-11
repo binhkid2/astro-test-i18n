@@ -1,26 +1,33 @@
 ---
 import ThemeSwitcher from "./ThemeSwitcher.astro";
-import { Search } from 'lucide-react';
+import {  Search } from "lucide-react";
 import { Image } from "astro:assets";
 import LanguageSelect from "./React/LanguageSelect";
 const { pathname } = Astro.url;
 const stickyHeader = true;
+import { defaultLang, getTranslations, type LanguageCode } from "@/i18n/config";
+import { getRelativeLocaleUrl } from "astro:i18n"; 
+export const prerender = false;
+const lang = (Astro.params.lang ?? defaultLang) as LanguageCode;
+const t = await getTranslations(lang);
+
+// Update menu to use localized URLs
 const menu = [
   {
-    name: "About",
-    url: "/about",
+    name: t.nav?.about || "About", // Use translation if available
+    url: getRelativeLocaleUrl(lang, "/about"),
   },
   {
-    name: "Features",
-    url: "/features",
+    name: t.nav?.features || "Features",
+    url: getRelativeLocaleUrl(lang, "/features"),
   },
   {
-    name: "Blog",
-    url: "/blog",
+    name: t.nav?.blog || "Blog",
+    url: getRelativeLocaleUrl(lang, "/blog"),
   },
   {
-    name: "Community",
-    url: "/community",
+    name: t.nav?.community || "Community",
+    url: getRelativeLocaleUrl(lang, "/community"),
   },
 ];
 ---
@@ -33,7 +40,7 @@ const menu = [
     <!-- Logo/Brand Section -->
     <div class="flex items-center relative">
       <a
-        href="/"
+        href={getRelativeLocaleUrl(lang, "/")}
         class="flex items-center gap-3 hover:opacity-80 transition-opacity duration-200 relative"
       >
         <!-- Logo -->
@@ -69,18 +76,21 @@ const menu = [
 
     <!-- Right Side Actions -->
     <div class="flex items-center space-x-3">
-       <!-- Language Select -->
-      <LanguageSelect client:only />
+      <!-- Language Select -->
+      <div class="hidden lg:block">
+        <LanguageSelect client:only />
+      </div>
+
       <!-- Search Button -->
-       <a href="/search">
-      <button
-        type="button"
-        class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
-        aria-label="Search"
-      >
-        <Search className="h-5 w-5" />
-      </button>
-</a>
+      <a href={getRelativeLocaleUrl(lang, "/search")}>
+        <button
+          type="button"
+          class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
+          aria-label="Search"
+        >
+          <Search className="h-5 w-5" />
+        </button>
+      </a>
       <!-- Theme Switcher -->
       <ThemeSwitcher />
 
@@ -128,5 +138,7 @@ const menu = [
         ))
       }
     </div>
-  </div>
+  <div class="flex items-center gap-4">
+  <LanguageSelect client:only /> 
+</div>
 </header>

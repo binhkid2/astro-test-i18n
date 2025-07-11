@@ -1,4 +1,3 @@
- 
 import { useState } from "react";
 import { ChevronDown, Check } from "lucide-react";
 
@@ -24,12 +23,12 @@ export default function LanguageSelect() {
   };
 
   return (
-    <div  id="main-title" className="  mx-auto px-6 space-y-6">
+    <div  id="main-title" className="   mx-auto p-6 space-y-6">
       {/* Custom Dropdown */}
-      <div className="relative  mx-auto">
-        <button
+      <div className="relative    mx-auto">
+         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="w-full flex items-center justify-between gap-3 px-4 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full flex items-center justify-between gap-3 px-4 bg-transparent border-2   rounded-xl shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         >
           <div className="flex items-center gap-3"> 
             <span className="font-medium text-gray-800">
@@ -45,15 +44,15 @@ export default function LanguageSelect() {
 
         {/* Dropdown Menu */}
         {isDropdownOpen && (
-          <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 max-h-80 overflow-y-auto">
+          <div className="absolute glass hide-scrollbar top-full left-0 right-0 mt-2  border  rounded-xl shadow-lg z-50 max-h-80 overflow-y-auto">
             {languageCodes.map((lang) => (
               <button
                 key={lang}
                 onClick={() => handleLanguageChange(lang)}
-                className={`w-full flex items-center gap-3 p-3 text-left hover:bg-gray-50 transition-colors first:rounded-t-xl last:rounded-b-xl ${
+                className={`w-full flex items-center gap-3 p-3 text-left  transition-colors first:rounded-t-xl last:rounded-b-xl ${
                   lang === currentLang
-                    ? "bg-blue-50 text-blue-700"
-                    : "text-gray-700"
+                    ? " bg-blue-300"
+                    : ""
                 }`}
               >
                 <img
@@ -62,12 +61,7 @@ export default function LanguageSelect() {
                   ].toLowerCase()}.png`}
                   alt={lang}
                   className="w-7 h-5 object-cover rounded-sm shadow-sm"
-                />
-
-                <span className="font-medium">{languages[lang]}</span>
-                {lang === currentLang && (
-                  <Check className="w-5 h-5 ml-auto text-blue-600" />
-                )}
+                />  
               </button>
             ))}
           </div>

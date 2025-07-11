@@ -1,20 +1,30 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
-import tailwindcss from "@tailwindcss/vite";
+import react from "@astrojs/react"; 
 import { languageCodes } from "./src/i18n/config";
+import sitemap from "@astrojs/sitemap"; 
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-console.log("languageCodes:",languageCodes)
+import tailwind from "@astrojs/tailwind";  
+import { languageCodes } from "./src/i18n/config";
+// https://astro.build/config
 export default defineConfig({
-  i18n: {
+  site: "https://rubito.jp",
+  base: "/",
+  trailingSlash: "ignore",
+  prefetch: {
+    prefetchAll: true
+  },
+   i18n: {
     locales:  languageCodes,
     defaultLocale: "en",
     routing: {
-      prefixDefaultLocale: true, 
+      prefixDefaultLocale: true,
     },
-  }, 
- 
-  integrations: [react(), sitemap()], 
-  vite: {
-    plugins: [tailwindcss()]
-  }
-})
+  },
+  integrations: [react(), sitemap(), tailwind({
+    config: {
+      applyBaseStyles: false
+    }
+  }),  ],
+   
+});

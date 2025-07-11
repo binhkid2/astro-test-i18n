@@ -9,24 +9,35 @@ export default defineConfig({
   site: "https://rubito.jp",
   base: "/",
   trailingSlash: "ignore",
-  output: 'static',
+  output: "server",
+  vite: {
+    resolve: {
+      alias: import.meta.env.PROD && {
+        "react-dom/server": "react-dom/server.edge",
+      },
+    },
+  },
   prefetch: {
-    prefetchAll: true
+    prefetchAll: true,
   },
 
   i18n: {
-   locales:  languageCodes,
-   defaultLocale: "en", 
-   routing: {
-     prefixDefaultLocale: true,
-   },
- },
+    locales: languageCodes,
+    defaultLocale: "en",
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
 
-  integrations: [react(), sitemap(), tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }),  ],
+  integrations: [
+    react(),
+    sitemap(),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+  ],
 
   adapter: cloudflare(),
 });
